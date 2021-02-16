@@ -6,6 +6,12 @@
 
 <script>
 document.getElementById("copyIp").onclick = function () {
- alert(document.getElementById("ip").value)
+var clientIp = document.getElementById("ip");
+  clientIp.select();
+  clientIp.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+  console.log("You ip->"+clientIp.value)
 }
 </script>
