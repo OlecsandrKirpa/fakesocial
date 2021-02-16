@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-
+  
+  # Se non sei autenticato, non puoi vedere nulla tranne l'index e la pagina show.
+  before_action :authenticate_user!, except: [:index, :show]
+  
+  # Verifica se sei l'utente giusto quando vuoi editare, modificare o distruggere.
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -12,7 +18,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    # @post = Post.new
+    @post = current_user.posts.build
   end
 
   # GET /posts/1/edit
@@ -21,7 +28,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
+    # @post = Post.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -56,6 +64,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def correct_user
+    # Cerca l'associazione tramite id
+	  @post = current_user.posts.find_by(id: params[:id])
+    # Ti porta nella home
+    redirect_to posts_path, notice: "Not authorized" if @post.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -64,6 +79,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :tags)
+      params.require(:post).permit(:title, :description, :tags, :user_id)
     end
 end

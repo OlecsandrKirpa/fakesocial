@@ -26,6 +26,10 @@
     <%= form.text_field :tags %>
   </div>
 
+<div class="field">
+    <%= form.number_field :user_id, placeholder: "User id", value: current_user.id, id: :post_user_id, type:"hidden" %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
