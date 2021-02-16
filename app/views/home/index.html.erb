@@ -1,4 +1,11 @@
 <%= render 'home/index_first' %>
-<p>I'm not sure, but your ip should be<%=@ip %></p>
+
+<p>I'm not sure, but your ip should be <input id="ip", value="<%=@ip %>"><button style="padding:4px!important;" id="copyIp" class="btn">Copy</button></p>
 <p><%=@date %></p>
-<p><%=@hours %></p>
+<p><%=@hours %> UTC</p>
+
+<script>
+document.getElementById("copyIp").onclick = function () {
+ alert(document.getElementById("ip").value)
+}
+</script>
