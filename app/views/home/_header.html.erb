@@ -10,11 +10,9 @@
 
                 <li class="nav-item" id="homeLi">
                     <%= link_to image_tag("home_basic.svg", :alt=> "Home img", :class => "navbar-ico"),
-                                root_path,
-                                class:"nav-link navbar-image",:id=>"homeButton" %>
-                    <%= link_to "Home" , root_path, class:"nav-link my-3",:id=>
-                                    "homeButtonSpan",:style=>"display:none" %>
-                    <%# , :style=>"display:none;" %>
+                    root_path,class:"nav-link navbar-image",:id=>"homeButton" %>
+
+                    <%= link_to "Home" , root_path, class:"nav-link my-3",:id=>"homeButtonSpan",:style=>"display:none" %>
                 </li>
 
                 <% if user_signed_in? %>
@@ -32,33 +30,33 @@
                 <% if !user_signed_in? %>
 
                 <li class="nav-item" id="signInLi">
-                    <%= link_to image_tag("user_basic.svg",:alt=> "User",:class => "navbar-ico"),
-                                            new_user_registration_path, class:"nav-link
-                                            navbar-image",:id=>"signInButton" %>
-                    <%= link_to "Sign up - Sign in" , new_user_registration_path,
-                                                class:"nav-link my-3",:id=>
-                                                "signInButtonSpan",:style=>"display:none" %> <%# %>
+                    <%= link_to image_tag("user_basic.svg",:alt=> "User",:class => "navbar-ico"), 
+                    new_user_registration_path, class:"nav-link navbar-image",:id=>"signInButton" %>
+                    <%= link_to "Sign up - Sign in" , new_user_registration_path, class:"nav-link my-3",:id=>
+                    "signInButtonSpan",:style=>"display:none" %>
                 </li>
+
 
                 <% else %>
 
+
                 <li class="nav-item" id="editUserLi">
                     <%= link_to image_tag("user_basic.svg",:alt=> "User",:class =>
-                                                "navbar-ico"), edit_user_registration_path, class:"nav-link
-                                                navbar-image",:id=>"editUserButton" %>
+                    "navbar-ico"), edit_user_registration_path, class:"nav-link
+                    navbar-image",:id=>"editUserButton" %>
+
                     <%= link_to "Edit Account" , edit_user_registration_path,
-                                                    class:"nav-link my-3",:id=>
-                                                    "editUserButtonSpan",:style=>"display:none" %>
+                    class:"nav-link my-3",:id=>
+                    "editUserButtonSpan",:style=>"display:none" %>
                 </li>
+
 
                 <li class="nav-item" id="signOutLi">
                     <%= link_to image_tag("sign_out.svg",:alt=> "User",:class => "navbar-ico"),
-                                                destroy_user_session_path, method: :delete, class:"nav-link
-                                                navbar-image",:id=>"signOutButton"
-                                                %>
+                    destroy_user_session_path, method: :delete, class:"nav-link navbar-image",:id=>"signOutButton"%>
+
                     <%= link_to "Sign out" , destroy_user_session_path, method: :delete, class:"nav-link
-                                                    my-3",:id=>
-                                                    "signOutButtonSpan",:style=>"display:none" %>
+                    my-3",:id=>"signOutButtonSpan",:style=>"display:none" %>
                 </li>
 
                 <% end %>

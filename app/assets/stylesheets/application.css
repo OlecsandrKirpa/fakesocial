@@ -67,8 +67,6 @@ input.purple-outline{
     display: block;
 }
 
-/* TODO REPLACE VIA JAVASCRIPT */
-
 .nav-item:hover > .nav-link.my-3{ 
     display: block !important;
 }
@@ -76,4 +74,14 @@ input.purple-outline{
     display: none !important;
 }
 
-/* END TODO REPLACE VIA JAVASCRIPT */
+.ip-input:focus{
+    text-decoration: underline;
+}
+.ip-input{
+    outline:none;
+    overflow: hidden;
+    border: none;
+    padding: .2em;
+    text-align: center;
+    border-radius: .5em;
+}

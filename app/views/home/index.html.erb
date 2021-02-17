@@ -1,21 +1,42 @@
-<%= render 'home/index_first' %>
+<h1><%=@goodwhatever %></h1>
+<h4> My name is Oleksandr and I'm trying to learn Ruby on Rails! </h4>
+<span> I started learning ruby on rails on 14.2.2021 and this is my first project.</span>
 
-<p>I'm not sure, but your ip should be 
+<hr class="mt-5">
+<div class="row text-center">
+    <div class="col col-12 col-md-4">
+        <p><%=@date %></p>
+    </div>
 
- <input class="form-control" id="ip", value="<%=@ip %>">
+    <div class="col col-12 col-md-4">
+        <p><%=@hours %></p>
+    </div>
 
-<button style="padding:4px!important;" id="copyIp" class="btn">Copy</button></p>
-<p><%=@date %></p>
-<p><%=@hours %> UTC</p>
+    <div class="col col-12 col-md-4">
+        <p>Your ip is
+            <input class="ip-input" value=<%=@ip %> placeholder="Your ip" id="ip">
+            <button id="copyIp" class="btn p-2 ml-3">Copy</button>
+        </p>
+    </div>
+
+</div>
+
+
+
+
 
 <script>
-document.getElementById("copyIp").onclick = function () {
-var clientIp = document.getElementById("ip");
-  clientIp.select();
-  clientIp.setSelectionRange(0, 99999); /* For mobile devices */
+    document.getElementById("copyIp").onclick = function() {
 
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-  console.log("You ip->"+clientIp.value)
-}
+
+
+        var clientIp = document.getElementById("ip");
+
+        clientIp.select();
+        clientIp.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+        console.log("You ip->" + clientIp.value)
+    }
 </script>
