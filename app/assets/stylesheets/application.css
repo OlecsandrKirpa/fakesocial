@@ -13,3 +13,56 @@
  *= require_tree .
  *= require_self
  */
+ /* TODO: CENTER COLLAPSED NAVBAR ELEMENTS */
+ /* TODO: SCROLLBAR */
+ /* Notifiche */
+ *{
+     box-sizing: border-box;
+ }
+ .navbar{
+     text-align: center;
+ }
+ body#body{
+     background-color: #f7f4fa;
+ }
+.navbar-ico{
+    max-height: 60px;
+    border-radius: 10px;
+}
+ .fakesocial_image{
+     max-height: 85px;
+     border-radius: 20px;
+ }
+.navbar-purple, .footer-purple{
+    
+    /* background-color: #eee9f5; */
+    background-color: #aa92cf
+}
+
+.purple-outline:hover, .purple{
+    background-color: #aa92cf;
+    border:1px solid #aa92cf;
+    color: #302148;
+}
+
+.purple:hover{
+    background-color: #302148;
+    border:1px solid #302148;
+    color: #aa92cf;
+}
+
+input.purple-outline{
+    color: #302148;
+    background-color: transparent;
+    background-image: none;
+    border:1px solid #302148;
+}
+
+.nav-item{
+    min-width: 76px;
+    cursor: pointer;
+}
+
+.nav-item:hover .nav-link.my-3{
+    display: block;
+}

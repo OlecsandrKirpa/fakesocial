@@ -1,6 +1,10 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Fakesocial</a>
+<nav class="navbar navbar-expand-lg navbar-light navbar-purple mb-4">
+        <%# <a class="navbar-brand" href="#">Fakesocial</a>  %>
+        <div class="container">
+    <%= image_tag("Fakesocial.svg", :alt => "rss feed", :class => "fakesocial_image navbar-brand") %>
+
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,36 +12,195 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
 
-      <li class="nav-item">
-        <%= link_to 'Home', root_path, class:"nav-link" %>
+      <li class="nav-item" id="homeLi" onmouseout="document.getElementById('homeButton').style.display = 'block';document.getElementById('homeButtonSpan').style.display = 'none';">
+        <%= link_to image_tag("home_basic.svg", :alt => "Home img", :class => "navbar-ico"), root_path, class:"nav-link",:id=>"homeButton" %>
+        <%= link_to "Home", root_path, class:"nav-link my-3",:id=>"homeButtonSpan",:style=>"display:none"  %> <%# , :style=>"display:none;" %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to 'About me', home_about_path, class:"nav-link"%>
+ 
+ 
+ 
+      <%# <li class="nav-item"> %>
+        <%# <%= link_to 'About me', home_about_path, class:"nav-link"%>
+        <%# </li> %>
+        <% if user_signed_in? %>  
+          <li class="nav-item" id="exploreLi">
+            <%= link_to image_tag("explore_basic.svg", :alt => "Explore", :class => "navbar-ico"), posts_path, class:"nav-link",:id=>"exploreButton" %>
+            <%= link_to "Explore", posts_path, class:"nav-link my-3",:id=>"exploreButtonSpan",:style=>"display:none" %> 
+          </li>
+
+  <script>
+  // let exploreLi = document.getElementById("exploreLi");
+  // let exploreButton = document.getElementById("exploreButton");
+  // let exploreButtonSpan = document.getElementById("exploreButtonSpan");
+
+  // exploreLi.onmouseover = function(){
+  //   exploreButton.style.display = "none";
+  //   exploreButtonSpan.style.display = "block";
+  // }
+
+  
+  // exploreLi.onmouseout = function(){
+  //   exploreButton.style.display = "block";
+  //   exploreButtonSpan.style.display = "none";
+  // }
+
+  </script>
+
+  
+        <% end %>
+      <% if !user_signed_in? %>
+
+      <li class="nav-item" id="signInLi">
+        <%= link_to image_tag("user_basic.svg",:alt => "User",:class => "navbar-ico"), new_user_registration_path, class:"nav-link",:id=>"signInButton" %>
+        <%= link_to "Sign up - Sign in", new_user_registration_path, class:"nav-link my-3",:id=>"signInButtonSpan",:style=>"display:none" %> <%#  %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to 'Posts', posts_path, class:"nav-link" %>
-      </li>
 
-<% if !user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to 'Sign up', new_user_registration_path, class:"nav-link" %>
-      </li>
+      <script>
+  // let signInLi = document.getElementById("signInLi");
+  // let signInButton = document.getElementById("signInButton");
+  // let signInButtonSpan = document.getElementById("signInButtonSpan");
 
-      <li class="nav-item">
-        <%= link_to 'Sign in', new_user_session_path, class:"nav-link" %>
-      </li>
+  // signInLi.onmouseover = function(){
+  //   signInButton.style.display = "none";
+  //   signInButtonSpan.style.display = "block";
+  // }
+
+  
+  // signInLi.onmouseout = function(){
+  //   signInButton.style.display = "block";
+  //   signInButtonSpan.style.display = "none";
+  // }
+
+  </script>
+
+      <%# <li class="nav-item"> %>
+         <%# <%= link_to 'Sign in', new_user_session_path, class:"nav-link" %>
+      <%# </li> %>
+      
+      
       <% else %>
-      <li class="nav-item">
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"nav-link" %>
+      <li class="nav-item" id="editUserLi">
+    <%= link_to image_tag("user_basic.svg",:alt => "User",:class => "navbar-ico"), edit_user_registration_path, class:"nav-link",:id=>"editUserButton" %>
+<%= link_to "Edit Account", edit_user_registration_path, class:"nav-link my-3",:id=>"editUserButtonSpan",:style=>"display:none" %>
+        </li>
+      
+
+       <script>
+  // let editUserLi = document.getElementById("editUserLi");
+  // let editUserButton = document.getElementById("editUserButton");
+  // let editUserButtonSpan = document.getElementById("editUserButtonSpan");
+
+  // editUserLi.onmouseover = function(){
+  //   editUserButton.style.display = "none";
+  //   editUserButtonSpan.style.display = "block";
+  // }
+
+  
+  // editUserLi.onmouseout = function(){
+  //   editUserButton.style.display = "block";
+  //   editUserButtonSpan.style.display = "none";
+  // }
+
+  </script>
+
+      <li class="nav-item" id="signOutLi">
+        <%= link_to image_tag("sign_out.svg",:alt => "User",:class => "navbar-ico"), destroy_user_session_path, method: :delete, class:"nav-link",:id=>"signOutButton" %>
+        <%= link_to "Sign out", destroy_user_session_path, class:"nav-link my-3",:id=>"signOutButtonSpan",:style=>"display:none" %>
         </li>
 
-    <li class="nav-item">
-    <%= link_to current_user.email, edit_user_registration_path, class:"nav-link"%>
-        </li>
+     <script>
+  // let signOutLi = document.getElementById("signOutLi");
+  // let signOutButton = document.getElementById("signOutButton");
+  // let signOutButtonSpan = document.getElementById("signOutButtonSpan");
+
+  // signOutLi.onmouseover = function(){
+  //   signOutButton.style.display = "none";
+  //   signOutButtonSpan.style.display = "block";
+  // }
+
+  
+  // signOutLi.onmouseout = function(){
+  //   signOutButton.style.display = "block";
+  //   signOutButtonSpan.style.display = "none";
+  // }
+
+  </script>
+
         <% end %>
 
             </ul>
         </div>
+        </div>
     </nav>
+
+<script>
+
+//  let homeLi = document.getElementById("homeLi");
+//     let homeButton = document.getElementById("homeButton");
+//     let homeSpan = document.getElementById("homeButtonSpan");
+//     if (homeLi != undefined && homeLi != null) {
+//         homeLi.onmouseover = function () {
+//             homeButton.style.display = "none";
+//             homeSpan.style.display = "block";
+//         }
+
+//         homeLi.onmouseout = function () {
+//             homeButton.style.display = "block";
+//             homeSpan.style.display = "none";
+//         }
+//     } else console.log("exploreLi==null")
+
+    // //   Explore
+    // let exploreLi = document.getElementById("exploreLi");
+    // let exploreButton = document.getElementById("exploreButton");
+    // let exploreButtonSpan = document.getElementById("exploreButtonSpan");
+    // if (exploreLi != undefined && exploreLi != null) {
+    //     exploreLi.onmouseover = function () {
+    //         exploreButton.style.display = "none";
+    //         exploreButtonSpan.style.display = "block";
+    //     }
+
+
+    //     exploreLi.onmouseout = function () {
+    //         exploreButton.style.display = "block";
+    //         exploreButtonSpan.style.display = "none";
+    //     }
+    // } else console.log("exploreLi==null")
+
+    // // Edit user
+    // let editUserLi = document.getElementById("editUserLi");
+    // let editUserButton = document.getElementById("editUserButton");
+    // let editUserButtonSpan = document.getElementById("editUserButtonSpan");
+
+    // if (editUserLi != undefined && editUserLi != null) {
+    //     editUserLi.onmouseover = function () {
+    //         editUserButton.style.display = "none";
+    //         editUserButtonSpan.style.display = "block";
+    //     }
+
+    //     editUserLi.onmouseout = function () {
+    //         editUserButton.style.display = "block";
+    //         editUserButtonSpan.style.display = "none";
+    //     }
+    // } else console.log("editUserLi==null")
+
+    // // Sign out
+    // let signOutLi = document.getElementById("signOutLi");
+    // let signOutButton = document.getElementById("signOutButton");
+    // let signOutButtonSpan = document.getElementById("signOutButtonSpan");
+    // if (signOutLi != undefined && signOutLi != null) {
+    //     signOutLi.onmouseover = function () {
+    //         signOutButton.style.display = "none";
+    //         signOutButtonSpan.style.display = "block";
+    //     }
+
+
+    //     signOutLi.onmouseout = function () {
+    //         signOutButton.style.display = "block";
+    //         signOutButtonSpan.style.display = "none";
+    //     }
+    // } else console.log("signOutLi == undef")
+
+</script>

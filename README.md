@@ -1,27 +1,29 @@
-# README
+# README - Fake Social
+# Hi
+This is a ruby on rails project.
 
+I started studying Ruby on Rails the 14-2-21.
 
-[Online application here.](https://fakesocial.herokuapp.com/)
+[Online application here - by Heroku](https://fakesocial.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tools
+[Color shades generator - website]()
 
-Things you may want to cover:
+[Svg generator online - website](https://mediamodifier.com/design)
 
-* Ruby version
+[.svg to .ico](https://convertio.co/it/svg-ico/)
 
-* System dependencies
+[Icon bg generator](https://bgjar.com/simple-shiny.html)
+### Colors: 
 
-* Configuration
+icons background #7952b3
 
-* Database creation
+Icons color #302148
 
-* Database initialization
+purple light #aa92cf
 
-* How to run the test suite
+VEDI
+https://getbootstrap.com/docs/4.2/components/toasts/
 
-* Services (job queues, cache servers, search engines, etc.)
+https://guides.rubyonrails.org/working_with_javascript_in_rails.html#server-side-concerns
 
-* Deployment instructions
-
-* ...
