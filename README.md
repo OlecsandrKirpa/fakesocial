@@ -23,6 +23,7 @@ Icons color #302148
 purple light #aa92cf
 
 VEDI
+
 https://getbootstrap.com/docs/4.2/components/toasts/
 
 https://guides.rubyonrails.org/working_with_javascript_in_rails.html#server-side-concerns
