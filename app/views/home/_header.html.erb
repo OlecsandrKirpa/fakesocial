@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-purple mb-4" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light navbar-purple mb-2" id="navbar">
     <%# <a class="navbar-brand" href="#">Fakesocial</a> %>
     <div class="container">
         <%= image_tag("Fakesocial.svg", :alt=> "rss feed", :class => "fakesocial_image navbar-brand") %>
@@ -8,21 +8,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
 
-                <li class="nav-item" id="homeLi">
-                    <%= link_to image_tag("home_basic.svg", :alt=> "Home img", :class => "navbar-ico"),
+                <% dir = "icons/normal-size/navbar/" %>
+
+                <li class="nav-item">
+                    <a style="visibility:hidden;">s</a>
+                    <%= link_to image_tag(dir+"home.svg", :alt=> "Home img", :class => "navbar-ico"),
                     home_index_path,class:"nav-link navbar-image",:id=>"homeButton" %>
 
-                    <%= link_to "Home" , home_index_path, class:"nav-link my-3",:id=>"homeButtonSpan",:style=>"display:none" %>
+                    <%= link_to "Home" , home_index_path, class:"nav-link appear-link-navbar",:id=>"homeButtonSpan",:style=>"visibility:hidden" %>
                 </li>
 
                 <% if user_signed_in? %>
 
-                <li class="nav-item" id="exploreLi">
-                    <%= link_to image_tag("explore_basic.svg", :alt=> "Explore", :class => "navbar-ico"),
+                <li class="nav-item">
+                    <a style="visibility:hidden;">s</a>
+                    <%= link_to image_tag(dir+"globe.svg", :alt=> "Explore", :class => "navbar-ico"),
                                     posts_path,
                                     class:"nav-link navbar-image",:id=>"exploreButton" %>
-                    <%= link_to "Explore" , posts_path, class:"nav-link my-3",:id=>
-                                        "exploreButtonSpan",:style=>"display:none" %>
+                    <%= link_to "Explore" , posts_path, class:"nav-link appear-link-navbar",:style=>"visibility:hidden" %>
                 </li>
 
                 <% end %>
@@ -30,38 +33,49 @@
                 <% if !user_signed_in? %>
 
                 <li class="nav-item" id="signInLi">
-                    <%= link_to image_tag("user_basic.svg",:alt=> "User",:class => "navbar-ico"), 
-                    new_user_registration_path, class:"nav-link navbar-image",:id=>"signInButton" %>
-                    <%= link_to "Sign up - Sign in" , new_user_registration_path, class:"nav-link my-3",:id=>
-                    "signInButtonSpan",:style=>"display:none" %>
+                    <a style="visibility:hidden;">s</a>
+                    <%= link_to image_tag(dir+"user-add.svg",:alt=> "User",:class => "navbar-ico"), 
+                    new_user_registration_path, class:"nav-link navbar-image"%>
+
+                    <%= link_to "Sign up" , new_user_registration_path, class:"nav-link appear-link-navbar",:style=>"visibility:hidden" %>
                 </li>
 
 
                 <% else %>
 
 
-                <li class="nav-item" id="editUserLi">
-                    <%= link_to image_tag("user_basic.svg",:alt=> "User",:class =>
+                <li class="nav-item">
+                    <%= link_to "Edit" , edit_user_registration_path,
+                    class:"nav-link appear-link-navbar",:style=>"visibility:hidden" %>
+
+                    <%= link_to image_tag(dir+"user-edit.svg",:alt=> "Edit Account",:class =>
                     "navbar-ico"), edit_user_registration_path, class:"nav-link
                     navbar-image",:id=>"editUserButton" %>
 
-                    <%= link_to "Edit Account" , edit_user_registration_path,
-                    class:"nav-link my-3",:id=>
-                    "editUserButtonSpan",:style=>"display:none" %>
+                    <%= link_to "Account" , edit_user_registration_path,
+                    class:"nav-link appear-link-navbar",:style=>"visibility:hidden" %>
                 </li>
 
 
-                <li class="nav-item" id="signOutLi">
-                    <%= link_to image_tag("sign_out.svg",:alt=> "User",:class => "navbar-ico"),
-                    destroy_user_session_path, method: :delete, class:"nav-link navbar-image",:id=>"signOutButton"%>
+                <li class="nav-item">
+                    <a style="visibility:hidden;">s</a>
+                    <%= link_to image_tag(dir+"log-out.svg",:alt=> "User",:class => "navbar-ico"),
+                    destroy_user_session_path, method: :delete, class:"nav-link navbar-image"%>
 
-                    <%= link_to "Sign out" , destroy_user_session_path, method: :delete, class:"nav-link
-                    my-3",:id=>"signOutButtonSpan",:style=>"display:none" %>
+                    <%= link_to "Sign out" , destroy_user_session_path, method: :delete, class:"nav-link appear-link-navbar", :style=>"visibility:hidden" %>
                 </li>
-
-                <% end %>
 
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a style="visibility:hidden;">s</a>
+                    <%= link_to image_tag(dir+"add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle"), new_post_path, class:"nav-link navbar-image"%>
+
+                    <%= link_to "Add post" , new_post_path, class:"nav-link appear-link-navbar",:style=>"visibility:hidden" %>
+                </li>
+
+            </ul>
+            <% end %>
         </div>
     </div>
 </nav>

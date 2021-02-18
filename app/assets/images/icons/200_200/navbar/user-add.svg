@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="200" height="200" viewBox="0 0 200 200" xml:space="preserve">
+<desc>Created with Fabric.js 4.2.0</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
+<g transform="matrix(1 0 0 1 100 100)" id="4745824d-4ca5-4ca4-bfaf-77377d24bdba"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-100" y="-100" rx="0" ry="0" width="200" height="200" />
+</g>
+<g transform="matrix(0 0 0 0 0 0)" id="1c29858b-fc48-46d2-b71d-fa96cc841c61"  >
+</g>
+<g transform="matrix(7.67 0 0 7.67 100 100)"  >
+<g style="" vector-effect="non-scaling-stroke"   >
+		<g transform="matrix(1 0 0 1 -3.5 6)"  >
+<path style="stroke: rgb(48,33,72); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-8.5, -18)" d="M 16 21 L 16 19 C 16 16.790861000676827 14.209138999323173 15 12 15 L 5 15 C 2.790861000676826 15 1 16.790861000676827 1 19 L 1 21" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 -3.5 -5)"  >
+<circle style="stroke: rgb(48,33,72); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="4" />
+</g>
+		<g transform="matrix(1 0 0 1 8 -1)"  >
+<line style="stroke: rgb(48,33,72); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x1="0" y1="-3" x2="0" y2="3" />
+</g>
+		<g transform="matrix(1 0 0 1 8 -1)"  >
+<line style="stroke: rgb(48,33,72); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x1="3" y1="0" x2="-3" y2="0" />
+</g>
+</g>
+</g>
+</svg>

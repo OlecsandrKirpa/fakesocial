@@ -1,5 +1,6 @@
 <h1>Posts</h1>
 
+<% icons = "icons/normal-size/" %>
 <% @posts.each do |post| %>
 <%# if post.user_id == current_user.id%>
 
@@ -8,7 +9,7 @@
         <div class="col">
 
             <div class="row email_show_div">
-                <span class="post_username"><%= post.user_username %><span>
+                <span class="post_username">@<%= post.user_username %><span>
                         <span class="small_text email_post"><%= post.user_email %></span>
             </div>
             <div class="row">
@@ -33,12 +34,12 @@
             </div>
         </div>
         <div class="dropdown-first flex-column px-2">
-            <%= link_to image_tag("eye-fill.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
+            <%= link_to image_tag(icons+"eye.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
             <div class="dropdown-content">
                 <% if post.user_id == current_user.id%>
-                <%= link_to image_tag("pencil-square.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
+                <%= link_to image_tag(icons+"edit.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
                 <br>
-                <%= link_to image_tag("trash-fill.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to image_tag(icons+"trash.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% end %>
             </div>
         </div>
@@ -47,4 +48,4 @@
 <% end %>
 
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to image_tag(icons+"navbar/add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle"), new_post_path %>

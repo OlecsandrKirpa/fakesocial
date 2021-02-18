@@ -26,7 +26,8 @@
      background-color: #f7f4fa;
  }
 .navbar-ico{
-    max-height: 60px;
+    /* max-height: 60px; */
+    height: 40px;
     border-radius: 10px;
 }
  .fakesocial_image{
@@ -67,11 +68,15 @@ input.purple-outline{
     display: block;
 }
 
-.nav-item:hover > .nav-link.my-3{ 
-    display: block !important;
+.appear-link-navbar{
+    padding: 0 !important;
+    text-align: center;
 }
-.nav-item:hover > .navbar-image{
-    display: none !important;
+.nav-item:hover > .appear-link-navbar{ 
+    visibility: visible !important;
+}
+a.nav-link.navbar-image{
+    padding-bottom: 0 !important;
 }
 
 .ip-input:focus{
@@ -106,4 +111,55 @@ input.purple-outline{
 }
 span.post_username{
     color:#302148;
+}
+/* ============== FORMS STYLE ==================== */
+
+#post_form .form-group{
+    border-radius: 1em;
+    padding: 0;
+    position: relative;
+    border-radius: 1em;
+}
+
+#post_form .form-field{
+    border: 1 px solid 302148;
+    /* border-radius: 0 1em 1em 0; */
+    /* background-color: #FFFFFF;  */
+    color: black;
+    font-size: larger;
+    text-align: center;
+    
+    outline: none;
+    width: 100%;
+}
+#post_form span.label{
+    
+    border-radius: 1em 0 0 1em;
+}
+
+/* TRANSITIONS  */
+.effect-8 ~ .focus-border:before,
+.effect-8 ~ .focus-border:after{content: ""; position: absolute; top: 0; left: 0; width: 0; height: 2px; background-color: #302148; transition: 0.3s;}
+.effect-8 ~ .focus-border:after{top: auto; bottom: 0; left: auto; right: 0;}
+.effect-8 ~ .focus-border i:before,
+.effect-8 ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #302148; transition: 0.4s;}
+.effect-8 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0;}
+.effect-8:focus ~ .focus-border:before,
+.effect-8:focus ~ .focus-border:after{width: 100%; transition: 0.3s;}
+.effect-8:focus ~ .focus-border i:before,
+.effect-8:focus ~ .focus-border i:after{height: 100%; transition: 0.4s;}
+
+.create-post{
+    margin-left: 10%;
+    width: 80%;
+    border-radius: 1em;
+}
+
+
+ img.left-arrow:hover{
+ -moz-box-shadow: 1px 1px 5px #999;
+ -webkit-box-shadow: 1px 1px 5px #999;
+ box-shadow: 1px 1px 5px #999;
+ -webkit-transition: all .2s ease;
+transition: all .2s ease;
 }

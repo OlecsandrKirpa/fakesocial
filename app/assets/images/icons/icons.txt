@@ -1,0 +1,14 @@
+https://feathericons.com/?query=edi
+
+eye - #28a745
+edit - #ffc107
+delete - #dc3545
+arrow left - #302148
+
+/navbar #302148
+Home
+Globe
+Edit account
+Add user
+Log out
+Add 

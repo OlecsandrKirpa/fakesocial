@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_02_17_233602) do
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+    t.string "title", default: "", null: false
+    t.string "description", default: "", null: false
     t.string "tags"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
