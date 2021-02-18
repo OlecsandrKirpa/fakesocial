@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   
-  # Se non sei autenticato, non puoi vedere nulla tranne l'index e la pagina show.
-  before_action :authenticate_user!, except: [:index]
-  
+  # Se non sei autenticato, non puoi vedere nulla
+  before_action :authenticate_user!
+  # , except: [:index]
   # Verifica se sei l'utente giusto quando vuoi editare, modificare o distruggere.
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
@@ -80,6 +80,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :tags, :user_id)
+      params.require(:post).permit(:title, :description, :tags, :user_id, :user_email, :user_username)
     end
 end
