@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="200" height="200" viewBox="0 0 200 200" xml:space="preserve">
+<desc>Created with Fabric.js 4.2.0</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
+<g transform="matrix(1 0 0 1 100 100)" id="84ba9ee5-473e-4596-8e24-b69d86d4df96"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-100" y="-100" rx="0" ry="0" width="200" height="200" />
+</g>
+<g transform="matrix(Infinity NaN NaN Infinity 0 0)" id="3b01e269-beef-4c4f-95fb-ce051e92fb34"  >
+</g>
+<g transform="matrix(11.36 0 0 11.36 100 100)"  >
+<g style="" vector-effect="non-scaling-stroke"   >
+		<g transform="matrix(1 0 0 1 0 0)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-8, -8)" d="M 10.5 8 C 10.5 9.380711874576983 9.380711874576983 10.5 8 10.5 C 6.619288125423017 10.5 5.5 9.380711874576983 5.5 8 C 5.5 6.619288125423017 6.619288125423017 5.5 8 5.5 C 9.380711874576983 5.5 10.5 6.619288125423016 10.5 7.999999999999999 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 0 0)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-8, -8)" d="M 0 8 C 0 8 3 2.5 8 2.5 C 13 2.5 16 8 16 8 C 16 8 13 13.5 8 13.5 C 3 13.5 0 8 0 8 z M 8 11.5 C 9.932996624407778 11.5 11.5 9.932996624407778 11.5 8 C 11.5 6.067003375592223 9.932996624407778 4.5 8 4.5 C 6.067003375592223 4.5 4.5 6.067003375592223 4.5 8 C 4.5 9.932996624407778 6.067003375592223 11.5 8 11.5 z" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</svg>

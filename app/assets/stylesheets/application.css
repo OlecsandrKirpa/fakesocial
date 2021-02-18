@@ -85,3 +85,14 @@ input.purple-outline{
     text-align: center;
     border-radius: .5em;
 }
+
+/* Create, Read, Update and Delete */
+.update{
+    max-width: 40px;
+}
+.dropdown-content{
+    display: none;
+}
+.dropdown-first:hover > .dropdown-content{
+    display: block !important;
+}
