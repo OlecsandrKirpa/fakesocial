@@ -5,39 +5,42 @@
 
 <div class="col col-6 border rounded p-3 px-4">
     <div class="row">
-        <div class="col col-9">
+        <div class="col">
 
-            <div class="row">
-                <span><%= post.user_username %><span>
+            <div class="row email_show_div">
+                <span class="post_username"><%= post.user_username %><span>
+                        <span class="small_text email_post"><%= post.user_email %></span>
             </div>
             <div class="row">
-                <em><%= post.user_email %></em>
+                <h3> <%= post.title %> </h3>
             </div>
             <div class="row">
-                <h6> <%= post.title %> </h6>
-                <p> <%= post.description %></p>
+                <p> <%= post.description %> <span class="tags">
+                        <% 
+                        tags_links = post.tags.split(" ") 
+                        len = tags_links.length()
+                        for index in 0..len %>
+                        <%# TODO LINKS HASHTAG %>
+                        <a href=#>
+                            <%=tags_links[index] %>
+                        </a>
+
+                        <% end %>
+                    </span></p>
             </div>
             <div class="row">
-                <span><%= post.tags %></span>
-            </div>
-            <div class="row">
-                <small><%= post.created_at %></small>
+                <span class="small_text"><%= post.created_at %></span>
             </div>
         </div>
-        <div class="col col-3 dropdown-first">
+        <div class="dropdown-first flex-column px-2">
             <%= link_to image_tag("eye-fill.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
             <div class="dropdown-content">
                 <% if post.user_id == current_user.id%>
-                <%= link_to image_tag("pencil-square.svg", :alt=> "Edit", :class => "update mx-auto"), edit_post_path(post) %>
+                <%= link_to image_tag("pencil-square.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
+                <br>
                 <%= link_to image_tag("trash-fill.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% end %>
             </div>
-        </div>
-        <div class="col border rounded text-center">
-
-
-
-
         </div>
     </div>
 </div>

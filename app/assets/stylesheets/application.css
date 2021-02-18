@@ -88,11 +88,22 @@ input.purple-outline{
 
 /* Create, Read, Update and Delete */
 .update{
-    max-width: 40px;
+    max-width: 25px;
 }
-.dropdown-content{
+.dropdown-content , .email_post{
     display: none;
 }
-.dropdown-first:hover > .dropdown-content{
+.dropdown-first:hover > .dropdown-content, .email_show_div:hover > .email_post {
     display: block !important;
+}
+.small_text{
+    font-size: .5em;
+    margin:0;
+}
+.tags >  a:hover{
+    color: #302148;
+    text-decoration: none;
+}
+span.post_username{
+    color:#302148;
 }

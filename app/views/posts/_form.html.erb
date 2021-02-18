@@ -1,4 +1,5 @@
 <%= form_with(model: post) do |form| %>
+
 <% if post.errors.any? %>
 <div id="error_explanation">
     <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -37,6 +38,7 @@
 <div class="field">
     <%= form.text_field :user_username, value: current_user.username, placeholder: "User username", id: :post_user_username, type:"hidden" %>
 </div>
+
 
 <div class="actions">
     <%= form.submit %>
