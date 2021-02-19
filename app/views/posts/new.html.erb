@@ -1,5 +1,4 @@
-<div class="row">
-    <%= link_to image_tag("icons/normal-size/arrow-left.svg", :alt => "rss feed", :class => "navbar-ico m-2 left-arrow rounded-circle"), :back %>
-    <h1>New post</h1>
+<div class="new-post-header-button col-4 mx-auto" onclick="hideOrShow()">
+    <h3 class="text-center" id="newPostBtn">New post</h3>
 </div>
 <%= render 'form', post: @post %>

@@ -16,13 +16,15 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    
+    # redirect_to posts_path
   end
 
   # GET /posts/new
   def new
     # @post = Post.new
-    @post = current_user.posts.build
+    # redirect_to :controller => 'post', :action => 'index'
+redirect_to posts_path
+    # @post = current_user.posts.build
   end
 
   # GET /posts/1/edit

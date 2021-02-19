@@ -1,177 +1,62 @@
 <% icons = "icons/normal-size/" %>
-<div class="new-post-header-button col-4 mx-auto" onclick="hideOrShow()">
-
-    <h3 class="text-center" id="newPostBtn">
-        <!-- 
-image_tag(icons+"eye-off-black.svg", :alt=> "",:class=>"my-2 ",:id=>"newPostEyeImage")
--->
-        <%#=image_tag(icons+"navbar/add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle" ,:id=>"newPostEyeImage", :type=>"hidden")%>
-
-        <!--
-        /assets/icons/normal-size/eye-off-black-677dca302c2bbf3100521aa58a0876fcde5eb55522d72dc5868ead11ff29708d.svg
-        /assets/icons/normal-size/eye-black-65abdac9f357443187cd6f985193acd092a9801d8b87324126682c9806dbdfe4.svg
-
-        
-
-        <img src="/assets/icons/normal-size/eye-off-black-677dca302c2bbf3100521aa58a0876fcde5eb55522d72dc5868ead11ff29708d.svg" id="newPostEyeImage">
--->
-        New post</h3>
-</div>
-
-<%= form_with(model: post) do |form| %>
-<% if post.errors.any? %>
-<div id="error_explanation">
-    <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-    <ul>
-        <% post.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
+<div id="post-index">
+    <h1 class="text-center">
+        <%
+=begin%>
+        <%= link_to image_tag(icons+"navbar/add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle ml-4 mr-2 left-arrow"), new_post_path %>
+        <%
+=end%>
+        Posts</h1>
 
 
-<div id="newPostCreator" class="col col-8 border warning-border rounded p-3 px-4 mx-auto" style="border:1px solid black !important; display:none;">
-    <div class="row">
-        <div class="col">
+    <%
+=begin%>
+    <h1>New Post</h1>
+    <%
+=end%>
 
-            <div class="row email_show_div">
-                <span class="post_username">
-                    <!--<div class="field">--><%= form.text_field :user_username, value: current_user.username, placeholder: "User username", id: :post_user_username, type:"hidden" %>
-                    <!--</div>-->
+    <div class="new-post-header-button col-4 mx-auto" onclick="hideOrShow()">
+        <h3 class="text-center" id="newPostBtn">New post</h3>
+    </div>
 
-                    @<%=current_user.username%>
-                    <span>
+    <%= render 'form', post: @post %>
+
+    <% @posts.reverse_each() do |post| %>
+    <%# if post.user_id == current_user.id%>
+
+    <div class="col col-8 rounded p-3 px-4 mx-auto my-3 post-element">
+        <div class="row">
+            <div class="col">
+
+                <div class="row email_show_div">
+                    <span class="post_username">@<%= post.user_username %><span>
+                            <span class="small_text email_post"><%= post.user_email %></span>
+                </div>
+                <div class="row">
+                    <span class="post-title"> <%= post.title %> </span>
+                </div>
+                <div class="row">
+                    <p class="postDescription"> <%= post.description %></p>
+                </div>
+                <div class="row">
+                    <span class="small_text"><%= post.created_at %></span>
+                </div>
             </div>
-
-            <div class="row">
-                <span class="post-title editable  mb-1 border-bottom-on-focus" id="titleSPan" contenteditable="true" onfocus="erase(this)" onfocusout="postPlaceholder(this)">I love ruby on rails</span>
-
+            <div class="dropdown-first flex-column px-2">
+                <%= link_to image_tag(icons+"eye.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
+                <div class="dropdown-content">
+                    <% if post.user_id == current_user.id%>
+                    <%= link_to image_tag(icons+"edit.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
+                    <br>
+                    <%= link_to image_tag(icons+"trash.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                </div>
             </div>
-            <div class="row">
-                <p class="post-description border-bottom-on-focus" contenteditable="true" id="descP" onfocus="erase(this)" onfocusout="postPlaceholder(this)"> I really do because it's something new and great!#cool #ruby #rails6 #lol</p>
-            </div>
-
-            <script>
-                function postPlaceholder(el) {
-                    if (el.innerHTML == "" || el.innerHTML == "undefined") {
-                        if (el.id == "titleSPan")
-                            el.innerHTML = "Title"
-                        else
-                            el.innerHTML = "Description"
-                        // console.error(el.innerHTML)
-                    }
-                }
-
-                function erase(el) {
-                    el.innerHTML = ""
-                    // document.getElementById('titleSPan').innerHTML = ""
-                }
-            </script>
-
-            <div class="row">
-                <span class="small_text">
-                    <%= Time.now.to_s.sub! '+0100', 'UTC' %>
-                </span>
-            </div>
-        </div>
-        <div class="dropdown-first flex-column px-2">
-            <%= form.submit :class => 'btn btn-outline-success create-post', :id=>"submitButtonPost", :onmouseover=>"compile()", :value=>""%>
         </div>
     </div>
-    <div class="form-group">
-        <%= form.text_field :title, :class=>"form-field effect-8", :id=>"titleInput",:placeholder=>"Title", type:"hidden" %>
-        <input type="text" , value="Descriptio" ,id="descriptionInput" , placeholder="Description" , style="display:none;">
-        <%= form.text_area :description, :id=>"descriptionInput",:placeholder=>"Description", :style=>"display:none;" %>
-
-        <%= form.text_field :tags, :class=>"form-field effect-8", :placeholder=>"Hashtag (#cool #beautiful)",
-                :id=>"tagsInput", type:"hidden" %>
-
-        <div class="field">
-            <%= form.number_field :user_id, value: current_user.id, id: :post_user_id, type:"hidden" %>
-        </div>
-
-        <div class="field">
-            <%= form.text_field :user_email, value: current_user.email, id: :post_user_email, type:"hidden" %>
-        </div>
-
-        <div class="field">
-            <%= form.text_field :user_username, value: current_user.username, placeholder: "User username", id: :post_user_username, type:"hidden" %>
-        </div>
-
-        <!-- =========== TODO VERIFICA SE I CAMPI NON SONO VUOTI =========== -->
-    </div>
+    <script>
+        // compile()
+        console.log(hashTags)
+    </script>
+    <% end %>
 </div>
-
-<script>
-    function hideOrShow() {
-        // let eye = document.getElementById("newPostEyeImage");
-        let d = document.getElementById('newPostCreator');
-        // console.log(d.style.display)
-        if (d.style.display == "none") {
-            // eye.style.display = "block"
-            // eye.src = "/assets/icons/normal-size/minus-circle.svg";
-            // "icons/normal-size/eye-off-black.svg"
-            newPostBtn.classList.add("color-red")
-            newPostBtn.innerHTML = "Hide"
-            d.style.display = 'block'
-        } else {
-            newPostBtn.classList.remove("color-red")
-            newPostBtn.innerHTML = "New post"
-            // eye.style.display = "none"
-            // eye.src = "/assets/icons/normal-size/navbar/add.svg";
-            d.style.display = "none"
-        }
-        // document.getElementById('newPostCreator').style.display = 'none'
-    }
-    submitButton = document.getElementById("submitButtonPost")
-    elIDesc = document.getElementById("descriptionInput");
-
-    elITitle = document.getElementById("titleInput");
-
-    let hashTags = "";
-    let allHashtags = [];
-    let startOfHashtags = []
-    let endOfHashtags = []
-
-    function compile() {
-        console.log("Compile called")
-        elSDesc = document.getElementById("descP").innerHTML;
-        elSTitle = document.getElementById("titleSPan").innerHTML;
-
-        // for (i = 0; i < elSDesc.length; i++) {
-        //     if (elSDesc[i] == "#") {
-
-        //         }
-        // }
-        let tag = "";
-        if (elSDesc.indexOf("#") != -1) {
-
-
-            for (i = elSDesc.indexOf("#"); i < elSDesc.length; i++) {
-                if (elSDesc[i] == "#") {
-                    let a = elSDesc.substring(i);
-                    space = a.indexOf(" ")
-                    if (space != -1) {
-                        let t = a.substring(0, space);
-                        allHashtags.push(t)
-                        hashTags = hashTags + t + " "
-                    } else {
-                        let t = a.substring(0);
-                        hashTags = hashTags + t + " "
-                    }
-                }
-            }
-
-            let elHashTags = document.getElementById("tagsInput");
-            elHashTags.value = hashTags;
-
-
-        }
-
-        elITitle.value = elSTitle;
-        elIDesc.value = elSDesc;
-    }
-</script>
-<% end %>
