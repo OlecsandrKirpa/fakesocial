@@ -1,4 +1,4 @@
-https://feathericons.com/?query=edi
+https://feathericons.com/
 
 eye - #28a745
 edit - #ffc107

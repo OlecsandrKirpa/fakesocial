@@ -1,51 +1,58 @@
-<h1>Posts</h1>
-
 <% icons = "icons/normal-size/" %>
-<% @posts.each do |post| %>
-<%# if post.user_id == current_user.id%>
+<div id="post-index">
+    <h1 class="text-center">
+        <%
+=begin%>
+        <%= link_to image_tag(icons+"navbar/add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle ml-4 mr-2 left-arrow"), new_post_path %>
+        <%
+=end%>
+        Posts</h1>
 
-<div class="col col-6 border rounded p-3 px-4">
-    <div class="row">
-        <div class="col">
 
-            <div class="row email_show_div">
-                <span class="post_username">@<%= post.user_username %><span>
-                        <span class="small_text email_post"><%= post.user_email %></span>
-            </div>
-            <div class="row">
-                <h3> <%= post.title %> </h3>
-            </div>
-            <div class="row">
-                <p> <%= post.description %> <span class="tags">
-                        <% 
-                        tags_links = post.tags.split(" ") 
-                        len = tags_links.length()
-                        for index in 0..len %>
-                        <%# TODO LINKS HASHTAG %>
-                        <a href=#>
-                            <%=tags_links[index] %>
-                        </a>
+    <%
+=begin%>
+    <h1>New Post</h1>
+    <%
+=end%>
 
-                        <% end %>
-                    </span></p>
+    <%= render 'form', post: @post %>
+
+    <% @posts.reverse_each() do |post| %>
+    <%# if post.user_id == current_user.id%>
+
+    <div class="col col-8 rounded p-3 px-4 mx-auto my-3 post-element">
+        <div class="row">
+            <div class="col">
+
+                <div class="row email_show_div">
+                    <span class="post_username">@<%= post.user_username %><span>
+                            <span class="small_text email_post"><%= post.user_email %></span>
+                </div>
+                <div class="row">
+                    <span class="post-title"> <%= post.title %> </span>
+                </div>
+                <div class="row">
+                    <p class="postDescription"> <%= post.description %></p>
+                </div>
+                <div class="row">
+                    <span class="small_text"><%= post.created_at %></span>
+                </div>
             </div>
-            <div class="row">
-                <span class="small_text"><%= post.created_at %></span>
-            </div>
-        </div>
-        <div class="dropdown-first flex-column px-2">
-            <%= link_to image_tag(icons+"eye.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
-            <div class="dropdown-content">
-                <% if post.user_id == current_user.id%>
-                <%= link_to image_tag(icons+"edit.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
-                <br>
-                <%= link_to image_tag(icons+"trash.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% end %>
+            <div class="dropdown-first flex-column px-2">
+                <%= link_to image_tag(icons+"eye.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
+                <div class="dropdown-content">
+                    <% if post.user_id == current_user.id%>
+                    <%= link_to image_tag(icons+"edit.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
+                    <br>
+                    <%= link_to image_tag(icons+"trash.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        // compile()
+        console.log(hashTags)
+    </script>
+    <% end %>
 </div>
-<% end %>
-
-
-<%= link_to image_tag(icons+"navbar/add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle"), new_post_path %>

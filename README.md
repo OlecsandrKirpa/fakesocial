@@ -13,7 +13,7 @@ I started studying Ruby on Rails the 14-2-21.
 
 [.svg to .ico](https://convertio.co/it/svg-ico/)
 
-[Icon bg generator](https://bgjar.com/simple-shiny.html)
+[Icon bg generator](https://bgjar.com/)
 ### Colors: 
 
 icons background #7952b3
@@ -21,6 +21,8 @@ icons background #7952b3
 Icons color #302148
 
 purple light #aa92cf
+
+purple lighter #e6def1 
 
 VEDI
 
