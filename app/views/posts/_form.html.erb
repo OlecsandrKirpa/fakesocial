@@ -1,62 +1,95 @@
 <% icons = "icons/normal-size/" %>
-<div id="post-index">
-    <h1 class="text-center">
-        <%
-=begin%>
-        <%= link_to image_tag(icons+"navbar/add.svg", :alt=> "New post", :class => "navbar-ico rounded-circle ml-4 mr-2 left-arrow"), new_post_path %>
-        <%
-=end%>
-        Posts</h1>
+
+<%= form_with(model: post) do |form| %>
+<% if post.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+        <% post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
 
 
-    <%
-=begin%>
-    <h1>New Post</h1>
-    <%
-=end%>
+<div id="post-index" class="col col-8 rounded p-3 px-4 mx-auto my-3 post-element">
+    <div class="row">
+        <div class="col">
 
-    <div class="new-post-header-button col-4 mx-auto" onclick="hideOrShow()">
-        <h3 class="text-center" id="newPostBtn">New post</h3>
-    </div>
-
-    <%= render 'form', post: @post %>
-
-    <% @posts.reverse_each() do |post| %>
-    <%# if post.user_id == current_user.id%>
-
-    <div class="col col-8 rounded p-3 px-4 mx-auto my-3 post-element">
-        <div class="row">
-            <div class="col">
-
-                <div class="row email_show_div">
-                    <span class="post_username">@<%= post.user_username %><span>
-                            <span class="small_text email_post"><%= post.user_email %></span>
-                </div>
-                <div class="row">
-                    <span class="post-title"> <%= post.title %> </span>
-                </div>
-                <div class="row">
-                    <p class="postDescription"> <%= post.description %></p>
-                </div>
-                <div class="row">
-                    <span class="small_text"><%= post.created_at %></span>
-                </div>
+            <div class="row email_show_div">
+                <span class="post_username">@<%= current_user.username %><span>
             </div>
-            <div class="dropdown-first flex-column px-2">
-                <%= link_to image_tag(icons+"eye.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
-                <div class="dropdown-content">
-                    <% if post.user_id == current_user.id%>
-                    <%= link_to image_tag(icons+"edit.svg", :alt=> "Edit", :class => "update mx-auto my-2"), edit_post_path(post) %>
-                    <br>
-                    <%= link_to image_tag(icons+"trash.svg", :alt=> "Edit", :class => "update mx-auto"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    <% end %>
-                </div>
+            <div class="row">
+                <!--
+                // MOLTO IMPORTANTE CHE LA PRIMA CLASSE SIA IDENTIFICATIVA
+            -->
+                <span class="post-title" contenteditable="true" onfocus="selectEl(this)" onblur='fillEl(this)'> Title </span>
+            </div>
+            <div class="row">
+                <!--
+                // MOLTO IMPORTANTE CHE LA PRIMA CLASSE SIA IDENTIFICATIVA
+            -->
+                <p class="postDescription " contenteditable="true" onfocus="selectEl(this)" onblur='fillEl(this)'>Description</p>
+            </div>
+            <div class="row">
+                <span class="small_text"><%= Time.now.to_s.sub! '+0100', 'UTC' %></span>
             </div>
         </div>
+        <div class="dropdown-first flex-column px-2">
+            <%= form.submit :id=>"createPostButton" ,:class=>"btn btn-outline-success", :value=>"" %>
+            <%#= link_to image_tag(icons+"eye.svg", :alt=> "Edit", :class => "update mx-auto"), post %>
+        </div>
     </div>
-    <script>
-        // compile()
-        console.log(hashTags)
-    </script>
-    <% end %>
 </div>
+
+<%= form.text_field :user_username, value: current_user.username, type:"hidden"%>
+<%= form.text_field :title, type:"hidden" %>
+
+<%= form.text_field :description, type:"hidden" %>
+
+<%= form.text_field :tags, type:"hidden" %>
+
+<%= form.number_field :user_id, value: current_user.id, id: :post_user_id, type:"hidden" %>
+
+
+
+
+<% end %>
+
+
+<script>
+    document.getElementById("createPostButton").onmouseover = function() {
+        let titleValue = document.querySelector(".post-title").innerHTML;
+        let titleInput = document.getElementById("post_title");
+        titleInput.value = titleValue;
+
+        let descValue = document.querySelector(".postDescription ").innerHTML;
+        let descInput = document.getElementById("post_description");
+        descInput.value = descValue;
+
+    }
+
+    function fillEl(obj) {
+        if (obj.innerHTML == "") {
+            // MOLTO IMPORTANTE CHE LA PRIMA CLASSE SIA IDENTIFICATIVA
+            let classObj = obj.classList[0]
+            if (classObj == "postDescription") {
+                obj.innerHTML = "Description"
+            } else
+            if (classObj == "post-title") {
+
+                obj.innerHTML = "Title"
+            }
+            // 
+        }
+    }
+
+    function selectEl(obj) {
+        // window.getSelection().selectAllChildren(obj); FOTCUS ALL THE TEXT
+        obj.innerHTML = ""
+        console.error("Focusing");
+
+    }
+</script>
